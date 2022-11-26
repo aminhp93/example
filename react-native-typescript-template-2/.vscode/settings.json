@@ -1,0 +1,8 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  },
+  "prettier.prettierPath": "./node_modules/prettier",
+  "javascript.validate.enable": false
+}
