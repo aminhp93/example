@@ -1,0 +1,24 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "crud-using-swr": "yarn workspace crud-using-swr run start"
+  },
+  "workspaces": [
+    "crud-using-swr",
+    "crud-using-useeffect"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aminhp93/example.git"
+  },
+  "author": "aminhp93",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aminhp93/example/issues"
+  },
+  "homepage": "https://github.com/aminhp93/example#readme"
+}
