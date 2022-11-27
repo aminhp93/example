@@ -1,43 +1,18 @@
-import { baseUrl } from "./utils";
-import axios from "axios";
 import React from "react";
-import toast from "react-hot-toast";
 
 type ModeType = "update" | "delete" | "view";
 
-const TestItem = ({ testData, onUpdateSuccess, onDeleteSuccess }: any) => {
+const TestItem = ({ testData, onMutateUpdate, onMutateDelete }: any) => {
   const [mode, setMode] = React.useState<ModeType>("view");
   const [tempName, setTempName] = React.useState(testData.name);
 
   const handleUpdate = async () => {
-    try {
-      const res = await axios({
-        url: `${baseUrl}/api/test/${testData.id}/`,
-        method: "PUT",
-        data: {
-          name: tempName,
-        },
-      });
-      setMode("view");
-      onUpdateSuccess && onUpdateSuccess(res.data);
-      toast.success("Successfully updated the item.");
-    } catch (e) {
-      toast.error("Failed to update the new item.");
-    }
+    onMutateUpdate && onMutateUpdate(testData.id, tempName);
+    setMode("view");
   };
 
   const handleDelete = async () => {
-    try {
-      await axios({
-        url: `${baseUrl}/api/test/${testData.id}/`,
-        method: "DELETE",
-      });
-      toast.success("Successfully deleted the item.");
-
-      onDeleteSuccess && onDeleteSuccess(testData);
-    } catch (e) {
-      toast.error("Failed to delete the new item.");
-    }
+    onMutateDelete && onMutateDelete(testData.id);
   };
 
   const handleChangeInput = (e: any) => {
@@ -58,7 +33,6 @@ const TestItem = ({ testData, onUpdateSuccess, onDeleteSuccess }: any) => {
           {testData.id} - {testData.name}{" "}
         </div>
       )}
-
       <div>
         {mode === "update" && (
           <>
